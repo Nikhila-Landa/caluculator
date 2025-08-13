@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        .input {
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        input {
+            height: 40px;
+            width: 95%;
+            max-width: 200px;
+            margin: 20px auto;
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer">
+        <div class="input"><input type="text" id="result" readonly></div>
+        <div class="calculator">
+            <button onclick="calculate('clear')">C</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('7')">7</button>
+            <button onclick="calculate('8')">8</button>
+            <button onclick="calculate('9')">9</button>
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('4')">4</button>
+            <button onclick="calculate('5')">5</button>
+            <button onclick="calculate('6')">6</button>
+            <button onclick="calculate('=')">=</button>
+            <button onclick="calculate('1')">1</button>
+            <button onclick="calculate('2')">2</button>
+            <button onclick="calculate('3')">3</button>
+            <button onclick="calculate('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+        function calculate(value) {
+            var result = document.getElementById('result');
+            if (value === 'clear') {
+                result.value = '';
+            } else if (value === '=') {
+                try {
+                    var output = eval(result.value);
+                    alert('Result: ' + output);
+                } catch (error) {
+                    alert('Invalid input');
+                }
+            } else {
+                result.value += value;
+            }
+        }
+    </script>
+</body>
+
+</html>
